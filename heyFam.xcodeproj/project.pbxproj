@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F3FA3CB7CDC8CF72350871A /* Pods_heyFam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */; };
+		E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31690D621AFE0650085E3DB /* AppDelegate.swift */; };
+		E31690D921AFE0650085E3DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31690D821AFE0650085E3DB /* ViewController.swift */; };
+		E31690DC21AFE0650085E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31690DA21AFE0650085E3DB /* Main.storyboard */; };
+		E31690DF21AFE0650085E3DB /* heyFam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */; };
+		E31690E121AFE0670085E3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31690E021AFE0670085E3DB /* Assets.xcassets */; };
+		E31690E421AFE0670085E3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */; };
+		E31690EC21AFF98C0085E3DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24B1C93D18315AB7E50A9DF8 /* Pods-heyFam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heyFam.release.xcconfig"; path = "Pods/Target Support Files/Pods-heyFam/Pods-heyFam.release.xcconfig"; sourceTree = "<group>"; };
+		A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_heyFam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC40FC165FDEE6B4F79739DC /* Pods-heyFam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heyFam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heyFam/Pods-heyFam.debug.xcconfig"; sourceTree = "<group>"; };
+		E31690D321AFE0650085E3DB /* heyFam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heyFam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E31690D621AFE0650085E3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E31690D821AFE0650085E3DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E31690DB21AFE0650085E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = heyFam.xcdatamodel; sourceTree = "<group>"; };
+		E31690E021AFE0670085E3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E31690E321AFE0670085E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E31690E521AFE0670085E3DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E31690D021AFE0650085E3DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3FA3CB7CDC8CF72350871A /* Pods_heyFam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0830AE46F6129F64D915305C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2567FBF9E2A40F3ACCAA1BC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC40FC165FDEE6B4F79739DC /* Pods-heyFam.debug.xcconfig */,
+				24B1C93D18315AB7E50A9DF8 /* Pods-heyFam.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E31690CA21AFE0650085E3DB = {
+			isa = PBXGroup;
+			children = (
+				E31690D521AFE0650085E3DB /* heyFam */,
+				E31690D421AFE0650085E3DB /* Products */,
+				2567FBF9E2A40F3ACCAA1BC2 /* Pods */,
+				0830AE46F6129F64D915305C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E31690D421AFE0650085E3DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E31690D321AFE0650085E3DB /* heyFam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E31690D521AFE0650085E3DB /* heyFam */ = {
+			isa = PBXGroup;
+			children = (
+				E31690D621AFE0650085E3DB /* AppDelegate.swift */,
+				E31690D821AFE0650085E3DB /* ViewController.swift */,
+				E31690DA21AFE0650085E3DB /* Main.storyboard */,
+				E31690E021AFE0670085E3DB /* Assets.xcassets */,
+				E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */,
+				E31690E521AFE0670085E3DB /* Info.plist */,
+				E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */,
+				E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */,
+			);
+			path = heyFam;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E31690D221AFE0650085E3DB /* heyFam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E31690E821AFE0670085E3DB /* Build configuration list for PBXNativeTarget "heyFam" */;
+			buildPhases = (
+				6D7F4EEF040B418EC495FF91 /* [CP] Check Pods Manifest.lock */,
+				E31690CF21AFE0650085E3DB /* Sources */,
+				E31690D021AFE0650085E3DB /* Frameworks */,
+				E31690D121AFE0650085E3DB /* Resources */,
+				0EE3A2FD05FBA6B7F39D05AE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = heyFam;
+			productName = heyFam;
+			productReference = E31690D321AFE0650085E3DB /* heyFam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E31690CB21AFE0650085E3DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Geekskool;
+				TargetAttributes = {
+					E31690D221AFE0650085E3DB = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = E31690CE21AFE0650085E3DB /* Build configuration list for PBXProject "heyFam" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E31690CA21AFE0650085E3DB;
+			productRefGroup = E31690D421AFE0650085E3DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E31690D221AFE0650085E3DB /* heyFam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E31690D121AFE0650085E3DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E31690E421AFE0670085E3DB /* LaunchScreen.storyboard in Resources */,
+				E31690EC21AFF98C0085E3DB /* GoogleService-Info.plist in Resources */,
+				E31690E121AFE0670085E3DB /* Assets.xcassets in Resources */,
+				E31690DC21AFE0650085E3DB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EE3A2FD05FBA6B7F39D05AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-heyFam/Pods-heyFam-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heyFam/Pods-heyFam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D7F4EEF040B418EC495FF91 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-heyFam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E31690CF21AFE0650085E3DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E31690DF21AFE0650085E3DB /* heyFam.xcdatamodeld in Sources */,
+				E31690D921AFE0650085E3DB /* ViewController.swift in Sources */,
+				E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E31690DA21AFE0650085E3DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E31690DB21AFE0650085E3DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E31690E321AFE0670085E3DB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E31690E621AFE0670085E3DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E31690E721AFE0670085E3DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E31690E921AFE0670085E3DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC40FC165FDEE6B4F79739DC /* Pods-heyFam.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 39XR5PLW4B;
+				INFOPLIST_FILE = heyFam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekskool.cs193p.heyFam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E31690EA21AFE0670085E3DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24B1C93D18315AB7E50A9DF8 /* Pods-heyFam.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 39XR5PLW4B;
+				INFOPLIST_FILE = heyFam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekskool.cs193p.heyFam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E31690CE21AFE0650085E3DB /* Build configuration list for PBXProject "heyFam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E31690E621AFE0670085E3DB /* Debug */,
+				E31690E721AFE0670085E3DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E31690E821AFE0670085E3DB /* Build configuration list for PBXNativeTarget "heyFam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E31690E921AFE0670085E3DB /* Debug */,
+				E31690EA21AFE0670085E3DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */,
+			);
+			currentVersion = E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */;
+			path = heyFam.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E31690CB21AFE0650085E3DB /* Project object */;
+}

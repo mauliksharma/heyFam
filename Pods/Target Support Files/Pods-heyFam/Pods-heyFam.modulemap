@@ -1,0 +1,6 @@
+framework module Pods_heyFam {
+  umbrella header "Pods-heyFam-umbrella.h"
+
+  export *
+  module * { export * }
+}
