@@ -7,13 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
+
 
 class SignupViewController: UIViewController {
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func signUp(_ sender: UIButton) {
+        
+        SVProgressHUD.show()
+        
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+            if error != nil {
+                print(error!)
+            } else {
+                print("Registration Successful!")
+                
+                SVProgressHUD.dismiss()
+                
+                self.performSegue(withIdentifier: "gotoChat", sender: self)
+            }
+            
+        }
+        
     }
     
 
