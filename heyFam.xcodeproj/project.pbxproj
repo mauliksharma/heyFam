@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2F3FA3CB7CDC8CF72350871A /* Pods_heyFam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */; };
+		E30500F821B0E01300BB91CD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30500F721B0E01300BB91CD /* WelcomeViewController.swift */; };
+		E30500FC21B0E02F00BB91CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30500FB21B0E02F00BB91CD /* LoginViewController.swift */; };
+		E30500FE21B0E03A00BB91CD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30500FD21B0E03A00BB91CD /* ChatViewController.swift */; };
+		E305010121B0E05900BB91CD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E305010021B0E05900BB91CD /* Default-568h@2x.png */; };
+		E305010321B0E5AE00BB91CD /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E305010221B0E5AE00BB91CD /* SignupViewController.swift */; };
 		E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31690D621AFE0650085E3DB /* AppDelegate.swift */; };
-		E31690D921AFE0650085E3DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31690D821AFE0650085E3DB /* ViewController.swift */; };
 		E31690DC21AFE0650085E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31690DA21AFE0650085E3DB /* Main.storyboard */; };
-		E31690DF21AFE0650085E3DB /* heyFam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */; };
 		E31690E121AFE0670085E3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31690E021AFE0670085E3DB /* Assets.xcassets */; };
 		E31690E421AFE0670085E3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */; };
 		E31690EC21AFF98C0085E3DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */; };
@@ -21,11 +24,14 @@
 		24B1C93D18315AB7E50A9DF8 /* Pods-heyFam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heyFam.release.xcconfig"; path = "Pods/Target Support Files/Pods-heyFam/Pods-heyFam.release.xcconfig"; sourceTree = "<group>"; };
 		A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_heyFam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC40FC165FDEE6B4F79739DC /* Pods-heyFam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heyFam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heyFam/Pods-heyFam.debug.xcconfig"; sourceTree = "<group>"; };
+		E30500F721B0E01300BB91CD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		E30500FB21B0E02F00BB91CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E30500FD21B0E03A00BB91CD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E305010021B0E05900BB91CD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E305010221B0E5AE00BB91CD /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E31690D321AFE0650085E3DB /* heyFam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heyFam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31690D621AFE0650085E3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E31690D821AFE0650085E3DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E31690DB21AFE0650085E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = heyFam.xcdatamodel; sourceTree = "<group>"; };
 		E31690E021AFE0670085E3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E31690E321AFE0670085E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E31690E521AFE0670085E3DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,9 +67,47 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E30500F421B0DFBF00BB91CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */,
+				E31690E521AFE0670085E3DB /* Info.plist */,
+				E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E30500F521B0DFDC00BB91CD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E31690D621AFE0650085E3DB /* AppDelegate.swift */,
+				E30500F721B0E01300BB91CD /* WelcomeViewController.swift */,
+				E305010221B0E5AE00BB91CD /* SignupViewController.swift */,
+				E30500FB21B0E02F00BB91CD /* LoginViewController.swift */,
+				E30500FD21B0E03A00BB91CD /* ChatViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E30500F621B0DFEC00BB91CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E31690DA21AFE0650085E3DB /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E30500FF21B0E04600BB91CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E31690CA21AFE0650085E3DB = {
 			isa = PBXGroup;
 			children = (
+				E305010021B0E05900BB91CD /* Default-568h@2x.png */,
 				E31690D521AFE0650085E3DB /* heyFam */,
 				E31690D421AFE0650085E3DB /* Products */,
 				2567FBF9E2A40F3ACCAA1BC2 /* Pods */,
@@ -82,14 +126,11 @@
 		E31690D521AFE0650085E3DB /* heyFam */ = {
 			isa = PBXGroup;
 			children = (
-				E31690D621AFE0650085E3DB /* AppDelegate.swift */,
-				E31690D821AFE0650085E3DB /* ViewController.swift */,
-				E31690DA21AFE0650085E3DB /* Main.storyboard */,
+				E30500FF21B0E04600BB91CD /* Model */,
+				E30500F521B0DFDC00BB91CD /* Controllers */,
+				E30500F621B0DFEC00BB91CD /* Views */,
+				E30500F421B0DFBF00BB91CD /* Supporting Files */,
 				E31690E021AFE0670085E3DB /* Assets.xcassets */,
-				E31690E221AFE0670085E3DB /* LaunchScreen.storyboard */,
-				E31690E521AFE0670085E3DB /* Info.plist */,
-				E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */,
-				E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */,
 			);
 			path = heyFam;
 			sourceTree = "<group>";
@@ -157,6 +198,7 @@
 				E31690E421AFE0670085E3DB /* LaunchScreen.storyboard in Resources */,
 				E31690EC21AFF98C0085E3DB /* GoogleService-Info.plist in Resources */,
 				E31690E121AFE0670085E3DB /* Assets.xcassets in Resources */,
+				E305010121B0E05900BB91CD /* Default-568h@2x.png in Resources */,
 				E31690DC21AFE0650085E3DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E31690DF21AFE0650085E3DB /* heyFam.xcdatamodeld in Sources */,
-				E31690D921AFE0650085E3DB /* ViewController.swift in Sources */,
+				E30500FC21B0E02F00BB91CD /* LoginViewController.swift in Sources */,
 				E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */,
+				E305010321B0E5AE00BB91CD /* SignupViewController.swift in Sources */,
+				E30500FE21B0E03A00BB91CD /* ChatViewController.swift in Sources */,
+				E30500F821B0E01300BB91CD /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,19 +473,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E31690DD21AFE0650085E3DB /* heyFam.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */,
-			);
-			currentVersion = E31690DE21AFE0650085E3DB /* heyFam.xcdatamodel */;
-			path = heyFam.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E31690CB21AFE0650085E3DB /* Project object */;
 }
