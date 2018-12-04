@@ -86,7 +86,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let messageDB = Database.database().reference().child("Messages")
         
-        messageDB.observe(.childAdded) { (snapshot) in
+        messageDB.observe(.childAdded) { [unowned self] (snapshot) in
             
             let snapshotValue = snapshot.value as! Dictionary<String,String>
             let body = snapshotValue["Body"]!
