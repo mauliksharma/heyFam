@@ -12,15 +12,15 @@ class UserTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
-    @IBOutlet var profilePhotoImageLabel: UIImageView!
+    @IBOutlet var photoImageView: UIImageView!
     
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        profilePhotoImageLabel?.layer.cornerRadius = profilePhotoImageLabel.frame.width / 2
-        profilePhotoImageLabel?.clipsToBounds = true
+        photoImageView?.layer.cornerRadius = photoImageView.frame.width / 2
+        photoImageView?.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

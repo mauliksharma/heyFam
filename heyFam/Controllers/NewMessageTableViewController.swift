@@ -7,41 +7,60 @@
 //
 
 import UIKit
+import Firebase
+
+let imagesCache = NSCache<NSString, UIImage>()
 
 class NewMessageTableViewController: UITableViewController {
     var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        fetchUsers()
+        
+    }
+    
+    func fetchUsers() {
+        Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
+            if let values = snapshot.value as? [String: String] {
+                let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"])
+                self.users.append(user)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+        if let userCell = cell as? UserTableViewCell {
+            
+            let user = users[indexPath.row]
+            userCell.nameLabel.text = user.name
+            userCell.emailLabel.text = user.email
+            
+            if let urlString = user.photoURL{
+                userCell.photoImageView.loadImageUsingCache(fromURLString: urlString)
+            }
+        }
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,4 +107,27 @@ class NewMessageTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension UIImageView {
+    func loadImageUsingCache(fromURLString urlString: String) {
+        self.image = nil
+        
+        if let cachedImage = imagesCache.object(forKey: urlString as NSString) {
+            self.image = cachedImage
+            return
+        }
+        
+        if let url = URL(string: urlString) {
+            DispatchQueue.global(qos: .userInitiated).async {
+                let urlContents = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    if let imageData = urlContents, let image = UIImage(data: imageData) {
+                        self.image = image
+                        imagesCache.setObject(image, forKey: urlString as NSString)
+                    }
+                }
+            }
+        }
+    }
 }

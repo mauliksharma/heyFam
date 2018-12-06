@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="64" id="6dN-4r-ZO1" customClass="UserTableViewCell" customModule="heyFam" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="64" id="6dN-4r-ZO1" customClass="UserTableViewCell" customModule="heyFam" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dN-4r-ZO1" id="Ddl-8b-eiB">
@@ -104,7 +104,7 @@
                                 <connections>
                                     <outlet property="emailLabel" destination="W2u-kx-fB3" id="hw8-mn-r9H"/>
                                     <outlet property="nameLabel" destination="oAf-ub-2db" id="o0N-w7-61X"/>
-                                    <outlet property="profilePhotoImageLabel" destination="i9w-sQ-wVE" id="4YJ-Rz-6s1"/>
+                                    <outlet property="photoImageView" destination="i9w-sQ-wVE" id="4YJ-Rz-6s1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
