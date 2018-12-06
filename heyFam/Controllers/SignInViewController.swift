@@ -129,17 +129,42 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
             guard let uid = result?.user.uid else { return }
             
-            let dbRef = Database.database().reference().child("Users").child(uid)
-            let values = ["name": name, "email": email]
-            dbRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                if let err = err {
-                    print(err)
-                    return
-                }
-                self.dismiss(animated: true, completion: nil)
-            })
+            
+            let imageName = UUID().uuidString
+            let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).png")
+            if let data = self.signInProfileImageView.image?.pngData() {
+                storeRef.putData(data, metadata: nil, completion: { (_, err) in
+                    if let err = err {
+                        print(err)
+                        return
+                    }
+                    
+                    storeRef.downloadURL(completion: { (url, e) in
+                        if let e = e {
+                            print(e)
+                            return
+                        }
+                        
+                        guard let url = url else { return }
+                        let values = ["name": name, "email": email, "photoURL": url.absoluteString]
+                        self.registerUserIntoDatabase(uid: uid, values: values)
+                    })
+                })
+            }
             
         }
+    }
+    
+    func registerUserIntoDatabase(uid: String, values: [String: String]) {
+        let dbRef = Database.database().reference().child("Users").child(uid)
+        
+        dbRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if let err = err {
+                print(err)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     override func viewDidLoad() {

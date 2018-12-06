@@ -7,10 +7,11 @@ target 'heyFam' do
   # Pods for heyFam
 
 pod 'Firebase'
+pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Storage'
 pod 'Firebase/Database'
 pod 'SVProgressHUD'
-pod 'ChameleonFramework'
 
 end
 
