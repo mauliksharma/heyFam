@@ -9,9 +9,16 @@
 import UIKit
 import Firebase
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var signInProfileImageView: UIImageView! {
+        didSet {
+            signInProfileImageView.isUserInteractionEnabled = true
+            signInProfileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapProfilePhotoImageView)))
+        }
+    }
+    
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet var inputContainerView: UIView! {
@@ -57,6 +64,33 @@ class SignInViewController: UIViewController {
         passwordTextFieldHeightConstraint.isActive = true
         
         authButton.setTitle(selectedIndex == 0 ? "Sign In" : "Sign Up", for: .normal)
+    }
+    
+    @objc func handleTapProfilePhotoImageView() {
+        print("yes")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedImage: UIImage?
+        
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImage = editedImage
+        }
+        else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImage = originalImage
+        }
+        signInProfileImageView.image = selectedImage
+        signInProfileImageView.layer.cornerRadius = signInProfileImageView.frame.width / 2
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Cancelled Picker")
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func triggerAuth(_ sender: UIButton) {
