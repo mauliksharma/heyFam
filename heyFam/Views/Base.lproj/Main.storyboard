@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Message Threads Table View Controller-->
+        <!--Messages-->
         <scene sceneID="K0Q-ua-eTW">
             <objects>
                 <tableViewController id="6p0-nm-fGz" customClass="MessageThreadsTableViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                             <outlet property="delegate" destination="6p0-nm-fGz" id="pdX-1s-HKf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nbz-Bf-MBF">
+                    <navigationItem key="navigationItem" title="Messages" id="nbz-Bf-MBF">
                         <barButtonItem key="leftBarButtonItem" title="SignOut" id="ocg-7d-cfE">
                             <connections>
                                 <action selector="signOut:" destination="6p0-nm-fGz" id="ftS-Rq-Fx8"/>
@@ -41,7 +41,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="sDX-KA-VRg">
                             <connections>
-                                <segue destination="5tO-Dv-M2v" kind="show" identifier="newMessageSegue" id="rRC-JL-rJh"/>
+                                <segue destination="kVl-R7-6sa" kind="presentation" identifier="newMessageSegue" id="eq4-zO-pbt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="726" y="-37"/>
         </scene>
-        <!--New Message Table View Controller-->
+        <!--New Message-->
         <scene sceneID="UIS-G4-iff">
             <objects>
-                <tableViewController id="5tO-Dv-M2v" customClass="NewMessageTableViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="New Message" id="5tO-Dv-M2v" customClass="NewMessageTableViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ly9-B4-mXs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,15 +113,22 @@
                             <outlet property="delegate" destination="5tO-Dv-M2v" id="4jj-u3-cRE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="New Message" id="PcI-px-FsO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qZg-ly-7Wi">
+                            <connections>
+                                <action selector="cancel:" destination="5tO-Dv-M2v" id="WdR-2X-qCh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAh-5v-hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="-327.88605697151428"/>
+            <point key="canvasLocation" x="2244" y="-398"/>
         </scene>
-        <!--Sign In View Controller-->
+        <!--HeyFam!-->
         <scene sceneID="FBc-I4-ejp">
             <objects>
-                <viewController id="1gB-Hi-CFH" customClass="SignInViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="HeyFam!" id="1gB-Hi-CFH" customClass="SignInViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5Q-6A-YfJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofY-Es-aWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="380"/>
+            <point key="canvasLocation" x="1513" y="319"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wg1-VG-DcO">
@@ -267,7 +274,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgU-P7-FAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="-37"/>
+            <point key="canvasLocation" x="-6" y="-37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Ai-na-RtG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kVl-R7-6sa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Re-Ot-cg5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5tO-Dv-M2v" kind="relationship" relationship="rootViewController" id="E76-5h-tTv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vZs-Da-Luk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512.8" y="-398.05097451274366"/>
         </scene>
     </scenes>
     <resources>

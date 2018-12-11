@@ -27,16 +27,14 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if Auth.auth().currentUser?.uid == nil {
+        checkIfUserLoggedIn()
+    }
+    
+    func checkIfUserLoggedIn() {
+        let uid = Auth.auth().currentUser?.uid
+        if uid == nil {
             performSegue(withIdentifier: "signOutSegue", sender: self)
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source

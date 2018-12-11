@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class SignInViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -106,12 +107,14 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("Invalid Form")
             return
         }
+        SVProgressHUD.show()
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print(error)
                 return
             }
+            SVProgressHUD.dismiss()
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -121,7 +124,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             print("Invalid Form")
             return
         }
-        
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print(error)
@@ -131,8 +134,9 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             
             let imageName = UUID().uuidString
-            let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).png")
-            if let data = self.signInProfileImageView.image?.pngData() {
+            let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).jpeg")
+            if let data = self.signInProfileImageView.image?.jpegData(compressionQuality: 0.2) {
+                
                 storeRef.putData(data, metadata: nil, completion: { (_, err) in
                     if let err = err {
                         print(err)
@@ -163,6 +167,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(err)
                 return
             }
+            SVProgressHUD.dismiss()
             self.dismiss(animated: true, completion: nil)
         })
     }

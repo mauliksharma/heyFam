@@ -20,6 +20,11 @@ class NewMessageTableViewController: UITableViewController {
         
     }
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     func fetchUsers() {
         Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
             if let values = snapshot.value as? [String: String] {
@@ -109,25 +114,4 @@ class NewMessageTableViewController: UITableViewController {
 
 }
 
-extension UIImageView {
-    func loadImageUsingCache(fromURLString urlString: String) {
-        self.image = nil
-        
-        if let cachedImage = imagesCache.object(forKey: urlString as NSString) {
-            self.image = cachedImage
-            return
-        }
-        
-        if let url = URL(string: urlString) {
-            DispatchQueue.global(qos: .userInitiated).async {
-                let urlContents = try? Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    if let imageData = urlContents, let image = UIImage(data: imageData) {
-                        self.image = image
-                        imagesCache.setObject(image, forKey: urlString as NSString)
-                    }
-                }
-            }
-        }
-    }
-}
+

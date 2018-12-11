@@ -18,6 +18,7 @@
 		E385BFDC21B94BF30034435D /* NewMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BFDB21B94BF30034435D /* NewMessageTableViewController.swift */; };
 		E385BFDE21B9503C0034435D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BFDD21B9503C0034435D /* UserTableViewCell.swift */; };
 		E385BFE021B953A10034435D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E385BFDF21B953A10034435D /* User.swift */; };
+		E3BF9F7321BA2ED60038B296 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BF9F7221BA2ED60038B296 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E385BFDB21B94BF30034435D /* NewMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewController.swift; sourceTree = "<group>"; };
 		E385BFDD21B9503C0034435D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E385BFDF21B953A10034435D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E3BF9F7221BA2ED60038B296 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				E31690E521AFE0670085E3DB /* Info.plist */,
 				E31690EB21AFF98C0085E3DB /* GoogleService-Info.plist */,
 				E30500FF21B0E04600BB91CD /* Model */,
+				E3BF9F7221BA2ED60038B296 /* Extensions.swift */,
 				E30500F521B0DFDC00BB91CD /* Controllers */,
 				E30500F621B0DFEC00BB91CD /* Views */,
 			);
@@ -262,6 +265,7 @@
 				E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */,
 				E385BFD821B7FFC30034435D /* MessageThreadsTableViewController.swift in Sources */,
 				E385BFDA21B7FFFB0034435D /* SignInViewController.swift in Sources */,
+				E3BF9F7321BA2ED60038B296 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
