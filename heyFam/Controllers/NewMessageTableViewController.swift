@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 let imagesCache = NSCache<NSString, UIImage>()
 
@@ -17,7 +18,6 @@ class NewMessageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
-        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -27,6 +27,7 @@ class NewMessageTableViewController: UITableViewController {
     
     func fetchUsers() {
         Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
+            SVProgressHUD.show()
             if let values = snapshot.value as? [String: String] {
                 let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"])
                 self.users.append(user)
@@ -35,13 +36,8 @@ class NewMessageTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
+            SVProgressHUD.dismiss()
         }
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,7 +52,7 @@ class NewMessageTableViewController: UITableViewController {
             userCell.nameLabel.text = user.name
             userCell.emailLabel.text = user.email
             
-            if let urlString = user.photoURL{
+            if let urlString = user.photoURL, !urlString.isEmpty{
                 userCell.photoImageView.loadImageUsingCache(fromURLString: urlString)
             }
         }

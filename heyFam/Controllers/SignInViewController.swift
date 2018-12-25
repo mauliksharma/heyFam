@@ -18,7 +18,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             signInProfileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapProfilePhotoImageView)))
         }
     }
-    
+    var customProfilePhotoSelected = false
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -31,16 +31,13 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet var authButton: UIButton!
     
     @IBOutlet var inputContainerViewAspectRatioConstraint: NSLayoutConstraint!
     @IBOutlet var nameTextFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet var firstSeparatorHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet var emailTextFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet var passwordTextFieldHeightConstraint: NSLayoutConstraint!
-    
     
     @IBAction func toggleSegment(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
@@ -64,11 +61,13 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
         passwordTextFieldHeightConstraint = NSLayoutConstraint(item: passwordTextField, attribute: .height, relatedBy: .equal, toItem: inputContainerView, attribute: .height, multiplier: emailpassTextFieldHeightMultiplier, constant: 0)
         passwordTextFieldHeightConstraint.isActive = true
         
+        signInProfileImageView.image = UIImage(named: "chat")
+        signInProfileImageView.isUserInteractionEnabled = selectedIndex == 0 ? false : true
+        customProfilePhotoSelected = false
         authButton.setTitle(selectedIndex == 0 ? "Sign In" : "Sign Up", for: .normal)
     }
     
     @objc func handleTapProfilePhotoImageView() {
-        print("yes")
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -86,11 +85,12 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         signInProfileImageView.image = selectedImage
         signInProfileImageView.layer.cornerRadius = signInProfileImageView.frame.width / 2
+        signInProfileImageView.clipsToBounds = true
+        customProfilePhotoSelected = true
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("Cancelled Picker")
         dismiss(animated: true, completion: nil)
     }
     
@@ -111,6 +111,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
+                SVProgressHUD.dismiss()
                 print(error)
                 return
             }
@@ -120,48 +121,54 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func signUp() {
-        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
+        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else
+        {
             print("Invalid Form")
             return
         }
         SVProgressHUD.show()
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
+                SVProgressHUD.dismiss()
                 print(error)
                 return
             }
             guard let uid = result?.user.uid else { return }
             
-            
-            let imageName = UUID().uuidString
-            let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).jpeg")
-            if let data = self.signInProfileImageView.image?.jpegData(compressionQuality: 0.2) {
-                
-                storeRef.putData(data, metadata: nil, completion: { (_, err) in
-                    if let err = err {
-                        print(err)
-                        return
-                    }
+            var photoURL = ""
+            if self.customProfilePhotoSelected {
+                let imageName = UUID().uuidString
+                let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).jpeg")
+                if let data = self.signInProfileImageView.image?.jpegData(compressionQuality: 0.2) {
                     
-                    storeRef.downloadURL(completion: { (url, e) in
-                        if let e = e {
-                            print(e)
+                    storeRef.putData(data, metadata: nil, completion: { (_, err) in
+                        if let err = err {
+                            print(err)
                             return
                         }
-                        
-                        guard let url = url else { return }
-                        let values = ["name": name, "email": email, "photoURL": url.absoluteString]
-                        self.registerUserIntoDatabase(uid: uid, values: values)
+                        storeRef.downloadURL(completion: { (url, er) in
+                            if let er = er {
+                                print(er)
+                                return
+                            }
+                            guard let url = url else { return }
+                            photoURL = url.absoluteString
+                        })
                     })
-                })
+                }
             }
-            
+            if self.customProfilePhotoSelected, photoURL.isEmpty {
+                SVProgressHUD.dismiss()
+                print("Image Upload Failed")
+                return
+            }
+            let values = ["name": name, "email": email, "photoURL": photoURL]
+            self.registerUserIntoDatabase(uid: uid, values: values)
         }
     }
     
     func registerUserIntoDatabase(uid: String, values: [String: String]) {
         let dbRef = Database.database().reference().child("Users").child(uid)
-        
         dbRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
             if let err = err {
                 print(err)

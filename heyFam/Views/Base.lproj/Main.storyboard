@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="2244" y="-398"/>
         </scene>
-        <!--HeyFam!-->
+        <!--Sign In View Controller-->
         <scene sceneID="FBc-I4-ejp">
             <objects>
-                <viewController title="HeyFam!" id="1gB-Hi-CFH" customClass="SignInViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1gB-Hi-CFH" customClass="SignInViewController" customModule="heyFam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5Q-6A-YfJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,7 +142,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwd-wv-XgQ" userLabel="Separator View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vwd-wv-XgQ" userLabel="First Separator View">
                                         <rect key="frame" x="0.0" y="44" width="351" height="1"/>
                                         <color key="backgroundColor" red="0.18404671550000001" green="0.2149449289" blue="0.26915121079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -155,7 +155,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBn-Cn-XIz" userLabel="Separator View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBn-Cn-XIz" userLabel="Second Separator View">
                                         <rect key="frame" x="0.0" y="88" width="351" height="1"/>
                                         <color key="backgroundColor" red="0.18404671550000001" green="0.2149449289" blue="0.26915121079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -214,7 +214,7 @@
                                     <action selector="toggleSegment:" destination="1gB-Hi-CFH" eventType="valueChanged" id="hQs-5b-lNe"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="KA8-rY-YTv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="KA8-rY-YTv">
                                 <rect key="frame" x="121" y="92.5" width="133" height="133"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KA8-rY-YTv" secondAttribute="height" multiplier="1:1" id="JXP-dU-o3M"/>
@@ -286,6 +286,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wQ8-cT-sXp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="5tO-Dv-M2v" kind="relationship" relationship="rootViewController" id="E76-5h-tTv"/>
                     </connections>

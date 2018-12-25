@@ -8,22 +8,23 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class MessageThreadsTableViewController: UITableViewController {
     
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     @IBAction func signOut(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show()
         do {
             try Auth.auth().signOut()
         }
         catch let signOutError {
+            SVProgressHUD.dismiss()
             print(signOutError)
+            return
         }
+        SVProgressHUD.dismiss()
         performSegue(withIdentifier: "signOutSegue", sender: sender)
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +94,6 @@ class MessageThreadsTableViewController: UITableViewController {
         return true
     }
     */
-
     
 
 }
