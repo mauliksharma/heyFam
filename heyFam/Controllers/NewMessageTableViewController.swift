@@ -13,6 +13,8 @@ import SVProgressHUD
 let imagesCache = NSCache<NSString, UIImage>()
 
 class NewMessageTableViewController: UITableViewController {
+    
+    var messageThreadsTVC: MessageThreadsTableViewController?
     var users = [User]()
 
     override func viewDidLoad() {
@@ -24,10 +26,9 @@ class NewMessageTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
     func fetchUsers() {
+        SVProgressHUD.show()
         Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
-            SVProgressHUD.show()
             let uid = snapshot.key
             if let values = snapshot.value as? [String: String] {
                 let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"], uid: uid)
@@ -35,9 +36,9 @@ class NewMessageTableViewController: UITableViewController {
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
-            SVProgressHUD.dismiss()
         }
     }
 
@@ -62,6 +63,13 @@ class NewMessageTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userSelected = users[indexPath.row]
+        messageThreadsTVC?.showChatLog(for: userSelected)
+        dismiss(animated: true, completion: nil)
+        
     }
 
     /*

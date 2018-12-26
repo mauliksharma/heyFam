@@ -12,6 +12,8 @@ import SVProgressHUD
 
 class MessageThreadsTableViewController: UITableViewController {
     
+    var messages = [Message]()
+    
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         SVProgressHUD.show()
         do {
@@ -29,6 +31,7 @@ class MessageThreadsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserLoggedIn()
+        fetchMessages()
     }
     
     func checkIfUserLoggedIn() {
@@ -37,28 +40,55 @@ class MessageThreadsTableViewController: UITableViewController {
             performSegue(withIdentifier: "signOutSegue", sender: self)
         }
     }
+    
+    func showChatLog(for user: User) {
+        performSegue(withIdentifier: "showChatLog", sender: user)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newMessageSegue" {
+            if let newMessageTVC = (segue.destination as? UINavigationController)?.visibleViewController as? NewMessageTableViewController {
+                newMessageTVC.messageThreadsTVC = self
+            }
+        }
+        if segue.identifier == "showChatLog" {
+            if let chatLogVC = segue.destination as? ChatLogViewController, let user = sender as? User {
+                chatLogVC.user = user
+            }
+        }
+    }
+    
+    func fetchMessages() {
+        SVProgressHUD.show()
+        Database.database().reference().child("Messages").observe(.childAdded) { (snapshot) in
+            if let values = snapshot.value as? [String: Any] {
+                let fromID = values["fromID"] as? String
+                let toID = values["toID"] as? String
+                let timestamp = values["timestamp"] as? Int
+                let text = values["text"] as? String
+                self.messages.append(Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp))
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
+                }
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return messages.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "threadCell", for: indexPath)
+        let message = messages[indexPath.row]
+        cell.textLabel?.text = message.toID
+        cell.detailTextLabel?.text = message.text
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

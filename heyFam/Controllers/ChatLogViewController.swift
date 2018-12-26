@@ -7,13 +7,53 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
-class ChatLogViewController: UIViewController {
-
+class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var user: User? {
+        didSet {
+            self.title = user?.name
+        }
+    }
+    
+    @IBOutlet var chatLogCollectionView: UICollectionView!
+    @IBOutlet var composeContainerView: UIView!
+    @IBOutlet var composeTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func sendMessage(_ sender: UIButton) {
+        handleSendMessage()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        handleSendMessage()
+        return true
+    }
+    
+    func handleSendMessage() {
+        guard let text = composeTextField.text, !text.isEmpty else { return }
+        guard let fromID = Auth.auth().currentUser?.uid, let toID = user?.uid else { return }
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let values = ["fromID": fromID, "toID": toID, "timestamp": timestamp, "text": text ] as [String : Any]
+        let dbRef = Database.database().reference().child("Messages").childByAutoId()
+        dbRef.updateChildValues(values)
+        composeTextField.text = ""
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath)
+        return cell
     }
     
 
