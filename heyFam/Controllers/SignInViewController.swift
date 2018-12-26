@@ -138,7 +138,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             if self.customProfilePhotoSelected {
                 let imageName = UUID().uuidString
                 let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).jpeg")
-                if let data = self.signInProfileImageView.image?.jpegData(compressionQuality: 0.2) {
+                if let data = self.signInProfileImageView.image?.jpegData(compressionQuality: 0.1) {
                     
                     storeRef.putData(data, metadata: nil, completion: { (_, err) in
                         if let err = err {

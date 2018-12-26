@@ -28,8 +28,9 @@ class NewMessageTableViewController: UITableViewController {
     func fetchUsers() {
         Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
             SVProgressHUD.show()
+            let uid = snapshot.key
             if let values = snapshot.value as? [String: String] {
-                let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"])
+                let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"], uid: uid)
                 self.users.append(user)
                 
                 DispatchQueue.main.async {
