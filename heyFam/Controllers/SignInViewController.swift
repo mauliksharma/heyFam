@@ -135,7 +135,6 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
             guard let uid = result?.user.uid else { return }
             
-            var photoURL = ""
             if self.customProfilePhotoSelected {
                 let imageName = UUID().uuidString
                 let storeRef = Storage.storage().reference().child("ProfileImages").child("\(imageName).jpeg")
@@ -152,18 +151,16 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
                                 return
                             }
                             guard let url = url else { return }
-                            photoURL = url.absoluteString
+                            let values = ["name": name, "email": email, "photoURL": url.absoluteString]
+                            self.registerUserIntoDatabase(uid: uid, values: values)
                         })
                     })
                 }
             }
-            if self.customProfilePhotoSelected, photoURL.isEmpty {
-                SVProgressHUD.dismiss()
-                print("Image Upload Failed")
-                return
+            else {
+                let values = ["name": name, "email": email, "photoURL": ""]
+                self.registerUserIntoDatabase(uid: uid, values: values)
             }
-            let values = ["name": name, "email": email, "photoURL": photoURL]
-            self.registerUserIntoDatabase(uid: uid, values: values)
         }
     }
     
