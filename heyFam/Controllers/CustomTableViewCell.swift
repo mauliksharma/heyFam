@@ -8,14 +8,13 @@
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var detailLabel: UILabel!
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var timestampLabel: UILabel!
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

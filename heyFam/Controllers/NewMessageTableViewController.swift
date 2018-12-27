@@ -48,11 +48,11 @@ class NewMessageTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-        if let userCell = cell as? UserTableViewCell {
+        if let userCell = cell as? CustomTableViewCell {
             
             let user = users[indexPath.row]
             userCell.nameLabel.text = user.name
-            userCell.emailLabel.text = user.email
+            userCell.detailLabel.text = user.email
             
             if let urlString = user.photoURL, !urlString.isEmpty{
                 userCell.photoImageView.loadImageUsingCache(fromURLString: urlString)

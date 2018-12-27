@@ -31,7 +31,7 @@ class MessageThreadsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserLoggedIn()
-        fetchMessages()
+//        fetchMessages()
     }
     
     func checkIfUserLoggedIn() {
@@ -58,23 +58,23 @@ class MessageThreadsTableViewController: UITableViewController {
         }
     }
     
-    func fetchMessages() {
-        SVProgressHUD.show()
-        Database.database().reference().child("Messages").observe(.childAdded) { (snapshot) in
-            if let values = snapshot.value as? [String: Any] {
-                let fromID = values["fromID"] as? String
-                let toID = values["toID"] as? String
-                let timestamp = values["timestamp"] as? Int
-                let text = values["text"] as? String
-                self.messages.append(Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp))
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    SVProgressHUD.dismiss()
-                }
-            }
-        }
-    }
+//    func fetchMessages() {
+//        SVProgressHUD.show()
+//        Database.database().reference().child("Messages").observe(.childAdded) { (snapshot) in
+//            if let values = snapshot.value as? [String: Any] {
+//                let fromID = values["fromID"] as? String
+//                let toID = values["toID"] as? String
+//                let timestamp = values["timestamp"] as? Int
+//                let text = values["text"] as? String
+//                self.messages.append(Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp))
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                    SVProgressHUD.dismiss()
+//                }
+//            }
+//        }
+//    }
 
     // MARK: - Table view data source
 
