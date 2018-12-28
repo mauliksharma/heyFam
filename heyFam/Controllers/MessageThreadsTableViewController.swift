@@ -94,8 +94,8 @@ class MessageThreadsTableViewController: UITableViewController, ViewControllerTr
                     let timestamp = values["timestamp"] as? Int
                     let text = values["text"] as? String
                     let message = Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp)
-                    let withUserID = fromID! == currentUID ? toID! : fromID!
-                    self.mostRecentMessagesDictionary[withUserID] = message
+                    let chatPartnerID = message.chatPartnerID!
+                    self.mostRecentMessagesDictionary[chatPartnerID] = message
                     self.messages = Array(self.mostRecentMessagesDictionary.values).sorted{$0.timestamp! > $1.timestamp!}
                     
                     DispatchQueue.main.async {
@@ -119,9 +119,8 @@ class MessageThreadsTableViewController: UITableViewController, ViewControllerTr
         if let customTVC = cell as? CustomTableViewCell {
             
             let message = messages[indexPath.row]
-            let currentUID = Auth.auth().currentUser?.uid
-            let withUserID = message.fromID! == currentUID! ? message.toID! : message.fromID!
-            Database.database().reference().child("Users").child(withUserID).observeSingleEvent(of: .value) { (snapshot) in
+            let chatPartnerID = message.chatPartnerID!
+            Database.database().reference().child("Users").child(chatPartnerID).observeSingleEvent(of: .value) { (snapshot) in
                 if let values = snapshot.value as? [String: String] {
                     customTVC.nameLabel.text = values["name"]
                     if let urlString = values["photoURL"] {
@@ -139,6 +138,17 @@ class MessageThreadsTableViewController: UITableViewController, ViewControllerTr
             
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = messages[indexPath.row]
+        guard let chatPartnerID = message.chatPartnerID else { return }
+        Database.database().reference().child("Users").child(chatPartnerID).observeSingleEvent(of: .value) { (snapshot) in
+            guard let values = snapshot.value as? [String: String] else { return }
+            let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"], uid: chatPartnerID)
+            self.showChatLog(for: user)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

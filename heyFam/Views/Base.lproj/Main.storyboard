@@ -312,28 +312,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wCQ-jY-llB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wCQ-jY-llB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.66673801369863017" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PCq-iG-2gQ">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="375" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="messageCell" id="ftE-bG-psT">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="messageCell" id="rzE-w6-ci2" customClass="ChatMessageCollectionViewCell" customModule="heyFam" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avs-vi-U5W">
+                                                    <rect key="frame" x="115" y="5" width="250" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Lc9-rp-Gjp"/>
+                                                        <constraint firstAttribute="width" constant="250" id="iOV-xC-bw6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="avs-vi-U5W" secondAttribute="trailing" constant="10" id="P8y-2y-1J1"/>
+                                            <constraint firstItem="avs-vi-U5W" firstAttribute="centerY" secondItem="rzE-w6-ci2" secondAttribute="centerY" id="Taa-9t-fJV"/>
+                                            <constraint firstItem="avs-vi-U5W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rzE-w6-ci2" secondAttribute="leading" constant="50" id="eY8-T1-ddA"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="chatMessageLabel" destination="avs-vi-U5W" id="r5E-Rd-oFf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-KB-wlL">
-                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNG-3z-V15" userLabel="Separator View">
                                         <rect key="frame" x="4" y="0.0" width="367" height="1"/>
@@ -343,21 +364,22 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jz-Cr-IDn">
-                                        <rect key="frame" x="330" y="5" width="37" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <rect key="frame" x="326" y="8.5" width="41" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Send"/>
                                         <connections>
                                             <action selector="sendMessage:" destination="fm0-Vc-YL4" eventType="touchUpInside" id="5F5-ra-LF9"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T9B-hm-vyG">
-                                        <rect key="frame" x="8" y="6" width="314" height="29"/>
+                                        <rect key="frame" x="8" y="6" width="310" height="39"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1jz-Cr-IDn" firstAttribute="leading" secondItem="T9B-hm-vyG" secondAttribute="trailing" constant="8" id="3Pi-Kk-Tev"/>
                                     <constraint firstItem="1jz-Cr-IDn" firstAttribute="centerY" secondItem="q8R-KB-wlL" secondAttribute="centerY" id="3qA-TQ-PvB"/>
@@ -367,7 +389,7 @@
                                     <constraint firstItem="yNG-3z-V15" firstAttribute="top" secondItem="q8R-KB-wlL" secondAttribute="top" id="QdD-Jn-wDJ"/>
                                     <constraint firstAttribute="trailing" secondItem="yNG-3z-V15" secondAttribute="trailing" constant="4" id="b9F-Ex-iDB"/>
                                     <constraint firstAttribute="bottom" secondItem="T9B-hm-vyG" secondAttribute="bottom" constant="5" id="dZ1-qJ-eJ4"/>
-                                    <constraint firstAttribute="height" constant="40" id="f7d-hx-Awu"/>
+                                    <constraint firstAttribute="height" constant="50" id="f7d-hx-Awu"/>
                                     <constraint firstItem="T9B-hm-vyG" firstAttribute="leading" secondItem="q8R-KB-wlL" secondAttribute="leading" constant="8" id="gLW-Zl-cBz"/>
                                 </constraints>
                             </view>

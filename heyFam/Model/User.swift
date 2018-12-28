@@ -13,4 +13,5 @@ struct User {
     let email: String?
     let photoURL: String?
     let uid: String?
+    
 }

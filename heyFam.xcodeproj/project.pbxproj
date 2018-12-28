@@ -10,6 +10,7 @@
 		2F3FA3CB7CDC8CF72350871A /* Pods_heyFam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CDABC860C460B4BF4B5161 /* Pods_heyFam.framework */; };
 		E302D01621D370C90083CFC2 /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D01521D370C90083CFC2 /* ChatLogViewController.swift */; };
 		E302D01821D38AC00083CFC2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E302D01721D38AC00083CFC2 /* Message.swift */; };
+		E30C283921D609CB0097C6AA /* ChatMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C283821D609CB0097C6AA /* ChatMessageCollectionViewCell.swift */; };
 		E31690D721AFE0650085E3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31690D621AFE0650085E3DB /* AppDelegate.swift */; };
 		E31690DC21AFE0650085E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31690DA21AFE0650085E3DB /* Main.storyboard */; };
 		E31690E121AFE0670085E3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31690E021AFE0670085E3DB /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		CC40FC165FDEE6B4F79739DC /* Pods-heyFam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heyFam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heyFam/Pods-heyFam.debug.xcconfig"; sourceTree = "<group>"; };
 		E302D01521D370C90083CFC2 /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
 		E302D01721D38AC00083CFC2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		E30C283821D609CB0097C6AA /* ChatMessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E31690D321AFE0650085E3DB /* heyFam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heyFam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31690D621AFE0650085E3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E31690DB21AFE0650085E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				E385BFDB21B94BF30034435D /* NewMessageTableViewController.swift */,
 				E302D01521D370C90083CFC2 /* ChatLogViewController.swift */,
 				E385BFDD21B9503C0034435D /* CustomTableViewCell.swift */,
+				E30C283821D609CB0097C6AA /* ChatMessageCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				E385BFD821B7FFC30034435D /* MessageThreadsTableViewController.swift in Sources */,
 				E385BFDA21B7FFFB0034435D /* SignInViewController.swift in Sources */,
 				E3BF9F7321BA2ED60038B296 /* Extensions.swift in Sources */,
+				E30C283921D609CB0097C6AA /* ChatMessageCollectionViewCell.swift in Sources */,
 				E302D01621D370C90083CFC2 /* ChatLogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
