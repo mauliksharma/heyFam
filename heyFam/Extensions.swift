@@ -11,8 +11,8 @@ import UIKit
 
 extension UIImageView {
     func loadImageUsingCache(fromURLString urlString: String) {
-        self.image = nil
-        
+        self.image = UIImage(named: "defaultAvatar")
+        guard !urlString.isEmpty else { return }
         if let cachedImage = imagesCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
             return

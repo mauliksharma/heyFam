@@ -30,13 +30,15 @@ class NewMessageTableViewController: UITableViewController {
         SVProgressHUD.show()
         Database.database().reference().child("Users").observe(.childAdded) { (snapshot) in
             let uid = snapshot.key
-            if let values = snapshot.value as? [String: String] {
-                let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"], uid: uid)
-                self.users.append(user)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    SVProgressHUD.dismiss()
+            if let currentUID = Auth.auth().currentUser?.uid, uid != currentUID {
+                if let values = snapshot.value as? [String: String] {
+                    let user = User(name: values["name"], email: values["email"], photoURL: values["photoURL"], uid: uid)
+                    self.users.append(user)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        SVProgressHUD.dismiss()
+                    }
                 }
             }
         }
@@ -54,7 +56,7 @@ class NewMessageTableViewController: UITableViewController {
             userCell.nameLabel.text = user.name
             userCell.detailLabel.text = user.email
             
-            if let urlString = user.photoURL, !urlString.isEmpty{
+            if let urlString = user.photoURL {
                 userCell.photoImageView.loadImageUsingCache(fromURLString: urlString)
             }
         }

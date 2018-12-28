@@ -10,7 +10,13 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class SignInViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+protocol ViewControllerTransitionDelegate {
+    func messageThreadsVCWillShow()
+}
+
+class SignInViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    
+    var vcTransitionDelegate: ViewControllerTransitionDelegate?
 
     @IBOutlet weak var signInProfileImageView: UIImageView! {
         didSet {
@@ -116,6 +122,7 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
                 return
             }
             SVProgressHUD.dismiss()
+            self.vcTransitionDelegate?.messageThreadsVCWillShow()
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -172,13 +179,21 @@ class SignInViewController: UIViewController, UIImagePickerControllerDelegate, U
                 return
             }
             SVProgressHUD.dismiss()
+            self.vcTransitionDelegate?.messageThreadsVCWillShow()
             self.dismiss(animated: true, completion: nil)
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 

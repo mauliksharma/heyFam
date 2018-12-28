@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class MessageThreadsTableViewController: UITableViewController {
+class MessageThreadsTableViewController: UITableViewController, ViewControllerTransitionDelegate, UINavigationControllerDelegate {
     
     var messages = [Message]()
+    var mostRecentMessagesDictionary  = [String: Message]()
     
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         SVProgressHUD.show()
@@ -30,15 +31,32 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        navigationController?.delegate = self
         checkIfUserLoggedIn()
-//        fetchMessages()
+        fetchMessagesForUser()
     }
     
     func checkIfUserLoggedIn() {
-        let uid = Auth.auth().currentUser?.uid
-        if uid == nil {
+        if Auth.auth().currentUser?.uid == nil {
             performSegue(withIdentifier: "signOutSegue", sender: self)
         }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if let _ = viewController as? MessageThreadsTableViewController {
+            messageThreadsVCWillShow()
+        }
+    }
+    
+    func messageThreadsVCWillShow() {
+        removeThreadsData()
+        tableView.reloadData()
+        fetchMessagesForUser()
+    }
+    
+    func removeThreadsData() {
+        messages.removeAll()
+        mostRecentMessagesDictionary.removeAll()
     }
     
     func showChatLog(for user: User) {
@@ -56,25 +74,39 @@ class MessageThreadsTableViewController: UITableViewController {
                 chatLogVC.user = user
             }
         }
+        if segue.identifier == "signOutSegue" {
+            if let signInVC = segue.destination as? SignInViewController {
+                signInVC.vcTransitionDelegate = self
+            }
+        }
     }
     
-//    func fetchMessages() {
+    func fetchMessagesForUser() {
+        guard let currentUID = Auth.auth().currentUser?.uid else { return }
 //        SVProgressHUD.show()
-//        Database.database().reference().child("Messages").observe(.childAdded) { (snapshot) in
-//            if let values = snapshot.value as? [String: Any] {
-//                let fromID = values["fromID"] as? String
-//                let toID = values["toID"] as? String
-//                let timestamp = values["timestamp"] as? Int
-//                let text = values["text"] as? String
-//                self.messages.append(Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp))
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                    SVProgressHUD.dismiss()
-//                }
-//            }
-//        }
-//    }
+        Database.database().reference().child("UserMessagesReferences").child(currentUID).observe(.childAdded) { (snapshot) in
+            
+            let messageID = snapshot.key
+            Database.database().reference().child("Messages").child(messageID).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let values = snapshot.value as? [String: Any] {
+                    let fromID = values["fromID"] as? String
+                    let toID = values["toID"] as? String
+                    let timestamp = values["timestamp"] as? Int
+                    let text = values["text"] as? String
+                    let message = Message(text: text, fromID: fromID, toID: toID, timestamp: timestamp)
+                    let withUserID = fromID! == currentUID ? toID! : fromID!
+                    self.mostRecentMessagesDictionary[withUserID] = message
+                    self.messages = Array(self.mostRecentMessagesDictionary.values).sorted{$0.timestamp! > $1.timestamp!}
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+//                        SVProgressHUD.dismiss()
+                    }
+                }
+
+            })
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -84,10 +116,33 @@ class MessageThreadsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "threadCell", for: indexPath)
-        let message = messages[indexPath.row]
-        cell.textLabel?.text = message.toID
-        cell.detailTextLabel?.text = message.text
+        if let customTVC = cell as? CustomTableViewCell {
+            
+            let message = messages[indexPath.row]
+            let currentUID = Auth.auth().currentUser?.uid
+            let withUserID = message.fromID! == currentUID! ? message.toID! : message.fromID!
+            Database.database().reference().child("Users").child(withUserID).observeSingleEvent(of: .value) { (snapshot) in
+                if let values = snapshot.value as? [String: String] {
+                    customTVC.nameLabel.text = values["name"]
+                    if let urlString = values["photoURL"] {
+                        customTVC.photoImageView.loadImageUsingCache(fromURLString: urlString)
+                    }
+                    customTVC.detailLabel.text = message.text
+                    
+                    let date = Date(timeIntervalSince1970: Double(message.timestamp!))
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "h:mm a"
+                    customTVC.timestampLabel.text = dateFormatter.string(from: date)
+
+                }
+            }
+            
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
     }
 
     /*

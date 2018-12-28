@@ -24,7 +24,7 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        composeTextField.delegate = self
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
