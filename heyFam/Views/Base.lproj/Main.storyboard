@@ -316,38 +316,46 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.66673801369863017" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PCq-iG-2gQ">
-                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="itemSize" width="375" height="64"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="messageCell" id="rzE-w6-ci2" customClass="ChatMessageCollectionViewCell" customModule="heyFam" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="10" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="10" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vx3-yO-Zkz">
+                                                    <rect key="frame" x="101" y="0.0" width="266" height="64"/>
+                                                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.80219927226027399" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avs-vi-U5W">
-                                                    <rect key="frame" x="115" y="5" width="250" height="40"/>
+                                                    <rect key="frame" x="109" y="22.5" width="250" height="19.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Lc9-rp-Gjp"/>
                                                         <constraint firstAttribute="width" constant="250" id="iOV-xC-bw6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="avs-vi-U5W" secondAttribute="trailing" constant="10" id="P8y-2y-1J1"/>
-                                            <constraint firstItem="avs-vi-U5W" firstAttribute="centerY" secondItem="rzE-w6-ci2" secondAttribute="centerY" id="Taa-9t-fJV"/>
+                                            <constraint firstItem="vx3-yO-Zkz" firstAttribute="top" secondItem="rzE-w6-ci2" secondAttribute="top" id="4JD-bk-Bsq"/>
+                                            <constraint firstItem="vx3-yO-Zkz" firstAttribute="leading" secondItem="avs-vi-U5W" secondAttribute="leading" constant="-8" id="4jI-I9-YSY"/>
+                                            <constraint firstAttribute="bottom" secondItem="vx3-yO-Zkz" secondAttribute="bottom" id="Aez-op-3Ui"/>
+                                            <constraint firstItem="vx3-yO-Zkz" firstAttribute="trailing" secondItem="avs-vi-U5W" secondAttribute="trailing" constant="8" id="P8y-2y-1J1"/>
+                                            <constraint firstAttribute="trailing" secondItem="vx3-yO-Zkz" secondAttribute="trailing" constant="8" id="Q0Q-pR-CWi"/>
+                                            <constraint firstItem="avs-vi-U5W" firstAttribute="centerY" secondItem="rzE-w6-ci2" secondAttribute="centerY" id="WzV-cS-b1S"/>
                                             <constraint firstItem="avs-vi-U5W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rzE-w6-ci2" secondAttribute="leading" constant="50" id="eY8-T1-ddA"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="chatBubble" destination="vx3-yO-Zkz" id="fLt-dp-1TL"/>
                                             <outlet property="chatMessageLabel" destination="avs-vi-U5W" id="r5E-Rd-oFf"/>
                                         </connections>
                                     </collectionViewCell>

@@ -85,6 +85,10 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
         composeTextField.text = ""
     }
     
+    var flowLayout: UICollectionViewFlowLayout? {
+        return chatLogCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
@@ -99,8 +103,25 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        
+        var height = CGFloat(50)
+        let padding = CGFloat(16)
+        if let text = messages[indexPath.row].text {
+            height = estimateFrameForText(text: text).height + padding
+        }
+        return CGSize(width: view.frame.width, height: height)
     }
+    
+    func estimateFrameForText(text: String) -> CGRect {
+        let height: CGFloat = 10000
+        
+        let size = CGSize(width: 250, height: height)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)]
+        
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
+    }
+    
     
     
     
@@ -115,4 +136,13 @@ class ChatLogViewController: UIViewController, UITextFieldDelegate, UICollection
     }
     */
 
+}
+
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        
+        return ceil(boundingBox.height)
+    }
 }
